@@ -18,7 +18,8 @@ public class CourseController
     {
         return Arrays.asList(new Course(1, "AWS Cloud 001", "Sourabh"),
         new Course(2, "Learn DevOps", "Shubham"),
-        new Course(3, "Java Spring Boot", "Vishal")  
+        new Course(3, "Java Spring Boot", "Vishal"),
+        new Course(4, "Learn Azure", "Vijay")
         );
     }
 }
