@@ -13,11 +13,11 @@ public class CurrencyServiceConfig
     private String key;
 
 
-    public CurrencyServiceConfig(String url, String username, String key) {
-        this.url = url;
-        this.username = username;
-        this.key = key;
-    }
+    // public CurrencyServiceConfig(String url, String username, String key) {
+    //     this.url = url;
+    //     this.username = username;
+    //     this.key = key;
+    // }
 
     public String getUrl() {
         return url;
@@ -47,5 +47,10 @@ public class CurrencyServiceConfig
         this.key = key;
     }
 
+
+    @Override
+    public String toString() {
+        return "CurrencyServiceConfig [url=" + url + ", username=" + username + ", key=" + key + "]";
+    }
 
 }
