@@ -1,0 +1,6 @@
+//SQL Queries 
+
+insert into course(id, name, author)
+values(1, 'Learn Spring Boot', 'Sourabh')
+
+select * from course
