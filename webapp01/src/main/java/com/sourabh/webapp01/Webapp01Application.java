@@ -1,12 +1,16 @@
-package com.todo.webapp01;
+package com.sourabh.webapp01;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class Webapp01Application {
+@ComponentScan
+public class Webapp01Application 
+{
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		SpringApplication.run(Webapp01Application.class, args);
 	}
 
