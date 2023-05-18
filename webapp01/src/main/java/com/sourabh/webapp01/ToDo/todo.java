@@ -1,16 +1,22 @@
 package com.sourabh.webapp01.ToDo;
 
 import java.time.LocalDate;
+import jakarta.validation.constraints.Size;
 
-public class todo 
+public class ToDo 
 {
+    public ToDo() {
+    }
+
     private int id;
     private String userName;
+
+    @Size(min=10, message = "Enter minimum 10 Characters")
     private String description;
     private LocalDate targetDate;
     private boolean done;
 
-    public todo(int id, String userName, String description, LocalDate targetDate, boolean done) 
+    public ToDo(int id, String userName, String description, LocalDate targetDate, boolean done) 
     {
         super();
         this.id = id;
@@ -62,8 +68,10 @@ public class todo
 
     @Override
     public String toString() {
-        return "todo [id=" + id + ", userName=" + userName + ", description=" + description + ", targetDate="
+        return "ToDo [id=" + id + ", userName=" + userName + ", description=" + description + ", targetDate="
                 + targetDate + ", done=" + done + "]";
     }
+
+    
     
 }
