@@ -3,7 +3,11 @@ package com.sourabh.webapp01.ToDo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+
 import org.springframework.stereotype.Service;
+
+import jakarta.validation.Valid;
 
 // All Logics
 
@@ -39,4 +43,30 @@ class ToDoService
         list_todos.add(newtodo);
         
     }
+
+    public void deleteById(int id)
+    {
+        Predicate<? super ToDo> predicate = ToDo->ToDo.getId() == id;
+        list_todos.removeIf(predicate);
+    }
+
+
+    public ToDo findById(int id) 
+    {
+        Predicate<? super ToDo> predicate = ToDo->ToDo.getId() == id;
+        ToDo localTodo = list_todos.stream().filter(predicate).findFirst().get();
+        return localTodo;
+    }
+
+
+    public void updateTodo(@Valid ToDo todoObj) 
+    {
+        deleteById(todoObj.getId());
+        list_todos.add(todoObj);
+    }
+
+
+    
+
+
 }
