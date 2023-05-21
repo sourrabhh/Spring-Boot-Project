@@ -1,13 +1,10 @@
-<html>
-    <title>
-        "Welcome Page"
-    </title>
+<%@ include file = "common/header.jspf" %>
+<!-- Navigation  -->
+<%@ include file = "common/navigation.jspf" %>
+<div class="container">
+    <h1>"Welcome ${name}!!"</h1>
+    
+    <a href="list-todos"> Manage </a> Your ToDos 
+</div>
 
-    <body>
-        <div class="container">
-            <h1>"Welcome ${name}!!"</h1>
-            
-            <a href="list-todos"> Manage </a> Your ToDos 
-        </div>
-    </body>
-</html>
+<%@ include file = "common/footer.jspf" %>
