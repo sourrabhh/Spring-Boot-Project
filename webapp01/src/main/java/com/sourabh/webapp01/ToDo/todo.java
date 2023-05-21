@@ -13,8 +13,8 @@ public class ToDo
     private int id;
     private String userName;
 
-    @Size(min = 4, message = "Enter minimum 4 character")
-    @NotNull
+    // @Size(min = 4, message = "Enter minimum 4 character")
+    // @NotNull
     String description;
     private LocalDate targetDate;
     private boolean done;

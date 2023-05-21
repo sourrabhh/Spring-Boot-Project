@@ -30,7 +30,9 @@ class ToDoService
 
     public List<ToDo> findByUserName(String username)
     {
-        return list_todos;
+        Predicate<? super ToDo> predicate = ToDo->ToDo.getUserName().equalsIgnoreCase(username);
+
+        return list_todos.stream().filter(predicate).toList();
     }
 
     
