@@ -2,17 +2,24 @@ package com.sourabh.webapp01.ToDo;
 
 import java.time.LocalDate;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
+// import jakarta.validation.constraints.NotNull;
+// import jakarta.validation.constraints.Size;
+
+@Entity
 public class ToDo 
 {
     public ToDo() {
     }
 
+    @Id
+    @GeneratedValue
     private int id;
-    private String userName;
 
+    private String userName;
     // @Size(min = 4, message = "Enter minimum 4 character")
     // @NotNull
     String description;
