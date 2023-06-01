@@ -18,13 +18,13 @@ class ToDoService
     private static int todosCount = 0;
     static
     {
-        list_todos.add(new ToDo(++todosCount, "sourabh", "Learn AWS", 
+        list_todos.add(new ToDo(++todosCount, "sourabh", "Learn AWS 1", 
         LocalDate.now().plusYears(1), false));
 
-        list_todos.add(new ToDo(++todosCount, "sourabh", "Learn DevOps", 
+        list_todos.add(new ToDo(++todosCount, "sourabh", "Learn DevOps 1", 
         LocalDate.now().plusDays(60), false));
 
-        list_todos.add(new ToDo(++todosCount, "sourabh", "Learn Azure", 
+        list_todos.add(new ToDo(++todosCount, "sourabh", "Learn Azure 1", 
         LocalDate.now().plusDays(100), false));
     }
 
@@ -66,9 +66,5 @@ class ToDoService
         deleteById(todoObj.getId());
         list_todos.add(todoObj);
     }
-
-
     
-
-
 }
