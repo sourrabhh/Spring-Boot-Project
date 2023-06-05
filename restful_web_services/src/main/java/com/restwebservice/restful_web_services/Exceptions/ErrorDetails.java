@@ -11,7 +11,7 @@ public class ErrorDetails
 
     public ErrorDetails(LocalDateTime timestamp, String message, String details) 
     {  
-        super();
+        // super();
         this.timestamp = timestamp;
         this.message = message;
         this.details = details;
