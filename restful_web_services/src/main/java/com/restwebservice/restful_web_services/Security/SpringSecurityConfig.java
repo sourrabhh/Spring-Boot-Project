@@ -19,7 +19,7 @@ public class SpringSecurityConfig
         // 2) If Request isnot authenticated  a web page (Pop Up) is shown
         http.httpBasic(withDefaults());
 
-        http.csrf().disable();
+        // http.csrf().disable();
         return http.build();
     }
 }
