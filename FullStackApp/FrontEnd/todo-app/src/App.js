@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import {Component} from 'react'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FirstComponent></FirstComponent>
+      <SecondComponent></SecondComponent>
+      <ThirdComponet></ThirdComponet>
+      <FourthComponent/>
     </div>
   );
 }
+
+function FirstComponent()
+{
+  return(
+    <div className="FirstComponent"> FIRST COMPONENT </div>
+  )
+}
+
+function SecondComponent() {
+  return(
+    <div className="SecondComponet">Second Component </div>
+  )  
+}
+
+class ThirdComponet extends Component
+{
+  render() {
+    return(
+      <div className="ThirdComponet">Third Component </div>
+    ) 
+  }
+}
+
+class FourthComponent extends Component
+{
+  render() {
+    return(
+      <div className='FourthComponent'>Fourth Component</div>
+    )
+  }
+}
+
 
 export default App;
