@@ -1,12 +1,18 @@
 import { useState } from 'react'
+import { BrowserRouter,Route,Routes,useNavigate } from 'react-router-dom'
 import './TodoApp.css'
 
 export default function TodoApp()
 {
     return(
         <div className="TodoApp">
-            <LoginComponent /> 
-            {/* <WelcomeComponet /> */}
+            <BrowserRouter >
+                <Routes>
+                    <Route path='/' element={<LoginComponent />} ></Route>
+                    <Route path='/login' element={<LoginComponent />} ></Route>
+                    <Route path='/welcome' element={<WelcomeComponet />} ></Route>
+                </Routes>
+            </BrowserRouter>
         </div>
     )
 }
@@ -18,6 +24,8 @@ function LoginComponent()
 
     const[showSuccessMessage, setshowSuccessMessage] = useState(false)
     const[showErrorMessage, setshowErrorMessage] = useState(false)
+
+    const navigate = useNavigate()
 
     function handleUsernameChange(event)
     {
@@ -32,10 +40,11 @@ function LoginComponent()
 
     function handleSubmit()
     {
-        if(username==='sourabh' && password==='default')
+        if(username==='sourabh' && password==='qwerty')
         {
             setshowSuccessMessage(true)
             setshowErrorMessage(false)
+            navigate('/welcome')
         }
         else{
             setshowSuccessMessage(false)
@@ -44,20 +53,11 @@ function LoginComponent()
 
 /*
     function SuccessMessageComponent()
-    {
-        if(showSuccessMessage){
-            return(<div className='successMessage'> Authenticated Successfully</div>)
-        }
-        return null
-    }
-
-    function ErrorMessageComponent()
-    {
-        if(showErrorMessage){
-            return(<div className='errorMessage'> Authentication Failed. Please Check Your Credentials </div>)
-        }
-        return null
-    }
+    { if(showSuccessMessage){return(<div className='successMessage'> Authenticated Successfully</div>)}
+        return null}
+    function ErrorMessageComponent(){
+        if(showErrorMessage){return(<div className='errorMessage'> Authentication Failed. Please Check Your Credentials </div>)}
+        return null}
     */
 
     return(
@@ -88,11 +88,10 @@ function LoginComponent()
     )
 }
 
-// function WelcomeComponet()
-// {
-//     return(
-//         <div className="Welcome">
-//             Welcome Component
-//         </div>
-//     )
-// }
+function WelcomeComponet(){
+    return(
+        <div className="Welcome">
+            Welcome Component
+        </div>
+    )
+}
