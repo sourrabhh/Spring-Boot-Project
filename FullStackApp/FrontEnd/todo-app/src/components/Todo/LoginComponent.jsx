@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useAuth } from './security/AuthenticationContext'
 
 
 export default function LoginComponent()
@@ -7,10 +8,11 @@ export default function LoginComponent()
     const[username, setUsername] = useState('sourabh')
     const[password, setPassword] = useState('')
 
-    const[showSuccessMessage, setshowSuccessMessage] = useState(false)
+    // const[showSuccessMessage, setshowSuccessMessage] = useState(false)
     const[showErrorMessage, setshowErrorMessage] = useState(false)
 
     const navigate = useNavigate()
+    const authContext = useAuth()  //Authentication
 
     function handleUsernameChange(event)
     {
@@ -25,30 +27,25 @@ export default function LoginComponent()
 
     function handleSubmit()
     {
-        if(username==='sourabh' && password==='qwe')
+        if(authContext.login(username,password))
         {
-            setshowSuccessMessage(true)
-            setshowErrorMessage(false)
+            // setshowSuccessMessage(true)
+            // setshowErrorMessage(false)
             navigate(`/welcome/${username}`)
         }
         else{
-            setshowSuccessMessage(false)
-            setshowErrorMessage(true)        }
+            // setshowSuccessMessage(false)
+            setshowErrorMessage(true)
+
+        }
     }
 
-/*
-    function SuccessMessageComponent()
-    { if(showSuccessMessage){return(<div className='successMessage'> Authenticated Successfully</div>)}
-        return null}
-    function ErrorMessageComponent(){
-        if(showErrorMessage){return(<div className='errorMessage'> Authentication Failed. Please Check Your Credentials </div>)}
-        return null}
-    */
+
 
     return(
 
         <div className="Login">
-            {showSuccessMessage && <div className='successMessage'> Authenticated Successfully</div>}
+            {/* {showSuccessMessage && <div className='successMessage'> Authenticated Successfully</div>} */}
             {showErrorMessage && <div className='errorMessage'> Authentication Failed. 
                                                             Please Check Your Credentials </div>}
             
