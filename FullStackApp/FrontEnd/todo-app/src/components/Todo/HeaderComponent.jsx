@@ -16,12 +16,12 @@ export default function HeaderComponent()
     }
 
     return(
-        <header className="border-bottom border-light border-5 mb-5 p-2">
+        <header className="border-bottom border-light border-3 mb-2 p-0">
         <div className="container">
-            <div className="row">
-                <nav className="navbar navbar-expand-lg">
+            {/* <div className="row"> */}
+                <nav className="navbar navbar-expand">
                     <a className="navbar-brand ms-2 fs-10 fw-bold text-black" href="https://www.google.com">Google</a>
-                        <ul className="navbar-nav" id='menu'>
+                        <ul className="navbar-nav">
                             <li className="nav-item fs-10" >
                                 {isAuthenticated && 
                                     <Link className="nav-link" to="/welcome/sourabh">Home</Link>}   
@@ -32,7 +32,7 @@ export default function HeaderComponent()
                             </li>
                         </ul>
                     
-                    <ul className="navbar-nav">
+                    <ul className="navbar-nav ms-auto">
                         <li className="nav-item fs-10">
                             {!isAuthenticated && <Link className="nav-link" to="/login">Login </Link> }
                         </li>
@@ -43,7 +43,7 @@ export default function HeaderComponent()
                     </ul>                    
                 </nav>
             </div>
-        </div>
+        {/* </div> */}
     </header>
     )
 }
