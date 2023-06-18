@@ -1,12 +1,12 @@
 import {useParams,Link } from "react-router-dom"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { AuthContext } from "./security/AuthenticationContext"
-import axios, { Axios } from "axios"
+import { RetrieveHelloWorldBean, RetrieveHelloWorldBeanPathVariable } from "./api/HelloWorldAPIService"
 
 export default function WelcomeComponent(){
     const {username} = useParams()
 
-    
+    const [message, setMessage] = useState(null)
 
 
 
@@ -16,15 +16,27 @@ export default function WelcomeComponent(){
 
     function CallHelloWorldRestAPI() {
         console.log("called")
-        axios.get('http://localhost:8080/helloworld')
-            .then( (response) => SuccessfulResponse(response) )
-            .catch( (error) => ErrorResponse(error) )
-            .finally( () => console.log("Clean Up") )
+
+            // axios.get('http://localhost:8080/helloworld')
+            //     .then( (response) => SuccessfulResponse(response) )
+            //     .catch( (error) => ErrorResponse(error) )
+            //     .finally( () => console.log("Clean Up") )
+
+            // RetrieveHelloWorldBean()
+            //     .then( (response) => SuccessfulResponse(response) )
+            //     .catch( (error) => ErrorResponse(error) )
+            //     .finally( () => console.log("Clean Up") )
+
+            RetrieveHelloWorldBeanPathVariable('Sourabh')
+                .then( (response) => SuccessfulResponse(response) )
+                .catch( (error) => ErrorResponse(error) )
+                .finally( () => console.log("Clean Up") )
     }
 
     function SuccessfulResponse(response)
     {
         console.log(response)
+        setMessage(response.data.message)
     }
 
     function ErrorResponse(error)
@@ -42,8 +54,9 @@ export default function WelcomeComponent(){
             <div> 
                 <button className="btn btn-success m-5" onClick={CallHelloWorldRestAPI}> Call Hello World
                 </button>
-
             </div>
+
+            <div className="text-info"> {message} </div>
         </div>
     )
 }
