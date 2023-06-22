@@ -1,6 +1,6 @@
 import {useParams,Link } from "react-router-dom"
 import { useContext, useState } from "react"
-import { AuthContext } from "./security/AuthenticationContext"
+import { AuthContext, useAuth } from "./security/AuthenticationContext"
 import { RetrieveHelloWorldBean, RetrieveHelloWorldBeanPathVariable } from "./api/HelloWorldAPIService"
 
 export default function WelcomeComponent(){
@@ -8,10 +8,10 @@ export default function WelcomeComponent(){
 
     const [message, setMessage] = useState(null)
 
+    const authContextToken = useAuth()
 
-
-    const authContext = useContext(AuthContext)
-    console.log(authContext.number)
+    // const authContext = useContext(AuthContext)
+    // console.log(authContext.number)
     // console.log(username)
 
     function CallHelloWorldRestAPI() {
@@ -27,7 +27,7 @@ export default function WelcomeComponent(){
             //     .catch( (error) => ErrorResponse(error) )
             //     .finally( () => console.log("Clean Up") )
 
-            RetrieveHelloWorldBeanPathVariable('Sourabh')
+            RetrieveHelloWorldBeanPathVariable('Sourabh', authContextToken.token)
                 .then( (response) => SuccessfulResponse(response) )
                 .catch( (error) => ErrorResponse(error) )
                 .finally( () => console.log("Clean Up") )

@@ -1,8 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { RetrieveTodoApi,UpdateTodoApi } from "./api/TodoAPIService"
+import { RetrieveTodoApi,UpdateTodoApi, createTodoApi } from "./api/TodoAPIService"
 import { useAuth } from "./security/AuthenticationContext"
 import { useEffect, useState } from "react"
 import { ErrorMessage, Field, Form, Formik } from "formik"
+import moment from "moment/moment"
 
 
 export default function TodoComponent()
@@ -22,12 +23,16 @@ export default function TodoComponent()
 
     function retrieveTodos()
     {
-        RetrieveTodoApi(username, id)
-            .then( response => {
-                setDescription(response.data.description)
-                setTargetDate(response.data.targetDate)
-            } )
-            .catch(error => console.log(error))
+        // eslint-disable-next-line eqeqeq
+        if(id != -1)
+        {
+            RetrieveTodoApi(username, id)
+                .then( response => {
+                    setDescription(response.data.description)
+                    setTargetDate(response.data.targetDate)
+                } )
+                .catch(error => console.log(error))
+        }
     }
 
     function onSubmit(values)
@@ -41,11 +46,25 @@ export default function TodoComponent()
             done:false
         }
         console.log(todo)
-        UpdateTodoApi(username,id,todo)
+
+        // eslint-disable-next-line eqeqeq
+        if(id == -1)
+        {
+            createTodoApi(username, todo)
+                .then(response => {
+                    navigate('/todos')
+                })
+                .catch(error => console.log(error))
+        }
+        else{
+            UpdateTodoApi(username,id,todo)
             .then( response => {
                 navigate('/todos')
             } )
             .catch(error => console.log(error))
+        }
+
+        
             
     }
 
@@ -60,7 +79,8 @@ export default function TodoComponent()
             error.description = "Enter at least 5 character"
         }
 
-        if(values.targetDate == null)
+        // eslint-disable-next-line eqeqeq
+        if(values.targetDate == null || values.targetDate ==''|| !moment(values.targetDate).isValid())
         {
             error.targetDate = "Enter valid Target Date"
         }
