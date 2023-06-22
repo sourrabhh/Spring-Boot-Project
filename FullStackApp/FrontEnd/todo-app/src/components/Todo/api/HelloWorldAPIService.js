@@ -13,10 +13,3 @@ export const RetrieveHelloWorldBeanPathVariable
         // }
         )
 
-export const ExecuteBasicAuthenticationService 
-        = (token) => apiClient.get(`/basicauth`,
-        {
-            headers:{
-                Authorization: token
-            }
-        })
