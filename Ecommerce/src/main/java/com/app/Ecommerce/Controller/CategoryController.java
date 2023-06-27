@@ -9,18 +9,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.ecommerce.Model.Category;
-import com.app.ecommerce.Repository.CategoryRepository;
 import com.app.ecommerce.Service.CategoryService;
 
 @RestController
 public class CategoryController 
 {
     private CategoryService categoryService;
-    private CategoryRepository categoryRepository;
+    // private CategoryRepository categoryRepository;
 
-    public CategoryController(CategoryService categoryService, CategoryRepository categoryRepository)
+    public CategoryController(CategoryService categoryService)
     {
-        this.categoryRepository = categoryRepository;
         this.categoryService = categoryService;
     }
 
