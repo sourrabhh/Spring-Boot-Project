@@ -3,6 +3,7 @@ package com.app.ecommerce.Controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,12 @@ public class CategoryController
     @GetMapping(path = "/list")
     public List<Category> listCategory()
     {
-        return categoryService.listCategory();
-        
+        return categoryService.listCategory();       
+    }
+
+    @PostMapping(path = "update/{categoryId}")
+    public Category updateCategory(@PathVariable int categoryId, @RequestBody Category category)
+    {
+        return categoryService.editCategory(categoryId, category);
     }
 }

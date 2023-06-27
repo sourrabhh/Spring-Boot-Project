@@ -23,4 +23,14 @@ public class CategoryService
     {
         categoryRepository.save(category);
     }
+
+    public Category editCategory(int categoryId, Category updateCategory) 
+    {
+        Category category = categoryRepository.findById(categoryId).get();
+        category.setCategoryName(updateCategory.getCategoryName());
+        category.setDescription(updateCategory.getDescription());
+        category.setImgURL(updateCategory.getImgURL());
+
+        return categoryRepository.save(category);
+    }
 }
