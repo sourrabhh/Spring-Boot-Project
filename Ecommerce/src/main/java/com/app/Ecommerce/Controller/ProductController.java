@@ -52,7 +52,7 @@ public class ProductController
     } 
 
     @PostMapping(path = "/update/{productId}")
-    public ResponseEntity<ApiResponse> updateProduct(@PathVariable Integer productId, @RequestBody ProductDto productDto)
+    public ResponseEntity<ApiResponse> updateProduct(@PathVariable Integer productId, @RequestBody ProductDto productDto) throws Exception
     {
         Optional<Category> optionalCategory = categoryRepository.findById(productDto.getCategoryId());
 
@@ -61,7 +61,7 @@ public class ProductController
             return new ResponseEntity<>(new ApiResponse(false, "Category does not exist"), HttpStatus.BAD_REQUEST);
         }
 
-        productService.updateProduct(productDto, optionalCategory.get());
-        return new ResponseEntity<>(new ApiResponse(true, "Product has been updated"), HttpStatus.CREATED);
+        productService.updateProduct(productDto, productId);
+        return new ResponseEntity<>(new ApiResponse(true, "Product has been updated"), HttpStatus.ACCEPTED);
     }
 }

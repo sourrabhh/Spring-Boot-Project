@@ -60,10 +60,18 @@ public class Product
         this.category = category;
     }
     
+
     @Override
     public String toString() {
         return "Product [id=" + id + ", productName=" + productName + ", imgURL=" + imgURL + ", price=" + price
                 + ", description=" + description + "]";
+    }
+    
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
     }
 
 }
