@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 public class Product 
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String productName;
@@ -39,7 +39,7 @@ public class Product
     public void setImgURL(String imgURL) {
         this.imgURL = imgURL;
     }
-    public double getPrice() {
+    public Integer getPrice() {
         return price;
     }
     public void setPrice(Integer price) {

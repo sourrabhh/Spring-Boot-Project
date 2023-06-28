@@ -1,6 +1,10 @@
 package com.app.ecommerce.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.app.ecommerce.DTO.ProductDto;
@@ -25,5 +29,36 @@ public class ProductService
         product.setCategory(category);
 
         productRepository.save(product);
+    }
+
+    public ProductDto getProductDto(Product product)
+    {
+        ProductDto productDto = new ProductDto();
+
+        productDto.setProductName(product.getProductName());
+        productDto.setDescription(product.getDescription());
+        productDto.setImgURL(product.getImgURL());
+        productDto.setPrice(product.getPrice());
+
+        productDto.setCategoryId(product.getCategory().getId());
+        return productDto;
+
+    }
+    
+    public List<ProductDto> getAllProducts() 
+    {
+        List<Product> allProducts = productRepository.findAll();
+
+        List<ProductDto> productDtos = new ArrayList<>();
+
+        for(Product product:allProducts)
+        {
+            productDtos.add(getProductDto(product));
+        }
+        return productDtos;
+    }
+
+    public void updateProduct(ProductDto productDto, Category category) 
+    {
     }
 }
