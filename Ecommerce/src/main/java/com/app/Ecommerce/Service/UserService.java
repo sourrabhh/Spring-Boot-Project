@@ -61,6 +61,5 @@ public class UserService
         String myhash = DatatypeConverter.printHexBinary(digest).toUpperCase();
 
         return myhash;
-    }
-    
+    }    
 }
