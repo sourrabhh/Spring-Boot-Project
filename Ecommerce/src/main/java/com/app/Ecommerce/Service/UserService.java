@@ -39,7 +39,8 @@ public class UserService
         try{
             encryptedPassword = hashPassword(signupDto.getPassword());
         }
-        catch(NoSuchAlgorithmException e){
+        catch(NoSuchAlgorithmException e)
+        {
             e.printStackTrace();
             // throw new CustomException(e.getMessage());
         }
